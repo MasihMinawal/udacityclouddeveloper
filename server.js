@@ -37,7 +37,7 @@ app.get("/filteredimage", async (req, res) => {
     res.status(400).send("No URL");
   } else {
     const filteredimage = await filterImageFromURL(image_url).then((value) =>
-      value != null ? res.send(value) : res.send("something went wrong")
+      value != null ? res.sendFile(value) : res.send("something went wrong")
     );
 
     deleteLocalFiles({ filteredimage });
